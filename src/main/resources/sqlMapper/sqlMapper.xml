@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nhnent.guestbook.dao.impl.GuestbookDAOImpl">
+	<resultMap type="com.nhnent.guestbook.vo.GuestbookVO" id="guestbookResultMap">
+		<result column="id" property="id" />
+		<result column="writer_name" property="writerName" />
+		<result column="writer_password" property="writerPassword" />
+		<result column="write_date" property="writeDate" />
+		<result column="moidfy_date" property="modifyDate" />
+	</resultMap>
+	<select id="getAllData" resultMap="guestbookResultMap">
+		SELECT
+		id, writer_name,
+		writer_password, write_date, modify_date 
+		FROM guestbook
+	</select>
+	<select id="getPasswordByWriterName" resultMap="guestbookResultMap">
+		SELECT
+		writer_password
+		FROM guestbook WHERE writer_name = #{writerName}
+	</select>
+
+</mapper>
