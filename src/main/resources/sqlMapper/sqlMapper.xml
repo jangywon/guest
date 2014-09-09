@@ -5,19 +5,60 @@
 		<result column="id" property="id" />
 		<result column="writer_name" property="writerName" />
 		<result column="writer_password" property="writerPassword" />
+		<result column="contents" property="contents" />
 		<result column="write_date" property="writeDate" />
 		<result column="moidfy_date" property="modifyDate" />
 	</resultMap>
 	<select id="getAllData" resultMap="guestbookResultMap">
 		SELECT
 		id, writer_name,
-		writer_password, write_date, modify_date 
+		writer_password, contents, write_date, modify_date
 		FROM guestbook
 	</select>
+	
+	<select id="getDataByWriterName" resultMap="guestbookResultMap"
+	parameterType="String">
+		SELECT
+		id, writer_name,
+		writer_password, contents, write_date, modify_date
+		FROM guestbook WHERE writer_name = #{writerName}
+	</select>
+	
+	
 	<select id="getPasswordByWriterName" resultMap="guestbookResultMap">
 		SELECT
 		writer_password
 		FROM guestbook WHERE writer_name = #{writerName}
 	</select>
-
+	<insert id="insertData" parameterType="com.nhnent.guestbook.vo.GuestbookVO"
+		useGeneratedKeys="true">
+		INSERT INTO guestbook
+		(
+		id,
+		writer_name,
+		writer_password,
+		contents,
+		write_date,
+		modify_date
+		)
+		VALUES
+		(
+		#{id},
+		#{writerName},
+		#{writerPassword},
+		#{contents},
+		now(),
+		#{modifyDate}
+		);
+	</insert>
+	
+	
+	
+	<delete id="deleteDataById" parameterType="String">
+		DELETE FROM guestbook
+		WHERE
+		writer_name = #{writerName}
+	</delete>
+	
+	
 </mapper>

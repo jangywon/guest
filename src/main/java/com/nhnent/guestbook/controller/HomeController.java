@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.nhnent.guestbook.dao.GuestbookDAO;
 
@@ -23,15 +24,14 @@ public class HomeController {
 	@Autowired
 	GuestbookDAO guestbookDAO;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		System.out.println("yw!");
-		System.out.println(guestbookDAO.getAllData());
-		return "home";
+	public ModelAndView home(Locale locale, Model model) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("allData",guestbookDAO.getAllData());
+		mv.setViewName("home");
+		return mv;
 	}
-	
 }

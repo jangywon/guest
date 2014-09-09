@@ -6,7 +6,19 @@ public class GuestbookVO {
 	String writerName;
 	String writerPassword;
 	String writeDate;
-	String modifyDate;
+	String contents;
+	String modifyDate = null;
+	
+	
+
+	public GuestbookVO() {
+	}
+
+	public GuestbookVO(String writerName, String writerPassword){
+		this.writerName = writerName;
+		this.writerPassword = writerPassword;
+	}
+	
 	/**
 	 * @return the id
 	 */
@@ -19,6 +31,21 @@ public class GuestbookVO {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	/**
+	 * @return the contents
+	 */
+	public String getContents() {
+		return contents;
+	}
+
+	/**
+	 * @param contents the contents to set
+	 */
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	
 	/**
 	 * @return the writerName
 	 */
