@@ -31,7 +31,7 @@
 		FROM guestbook WHERE writer_name = #{writerName}
 	</select>
 	<insert id="insertData" parameterType="com.nhnent.guestbook.vo.GuestbookVO"
-		useGeneratedKeys="true">
+		useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO guestbook
 		(
 		id,
@@ -43,16 +43,14 @@
 		)
 		VALUES
 		(
-		#{id},
+		NULL,
 		#{writerName},
 		#{writerPassword},
 		#{contents},
 		now(),
-		#{modifyDate}
-		);
+		NULL
+		)
 	</insert>
-	
-	
 	
 	<delete id="deleteDataById" parameterType="String">
 		DELETE FROM guestbook

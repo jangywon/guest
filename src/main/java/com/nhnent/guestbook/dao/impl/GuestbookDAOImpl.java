@@ -31,7 +31,7 @@ public class GuestbookDAOImpl implements GuestbookDAO {
 
 	@Override
 	public void insertData(GuestbookVO guestbookVO) {
-
+		sqlSession.insert("insertData",guestbookVO);
 	}
 
 	@Override

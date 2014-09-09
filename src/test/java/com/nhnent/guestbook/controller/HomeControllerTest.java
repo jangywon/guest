@@ -36,7 +36,6 @@ public class HomeControllerTest {
 		guestbookDAO.getAllData();
 	}
 	
-	@Ignore
 	@Test
 	public void 데이터_입력_테스트() {
 		guestbookDAO.insertData(guestbookVO);
