@@ -42,7 +42,6 @@ public class HomeControllerTest {
 		}
 	@Test
 	public void 입력된_데이터_삭제(){
-		guestbookDAO.deleteDataById(guestbookVO.getWriterName());
+		guestbookDAO.deleteDataById(guestbookVO.getId());
 	}
-	
 }

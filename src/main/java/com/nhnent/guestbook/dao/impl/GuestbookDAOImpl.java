@@ -35,12 +35,17 @@ public class GuestbookDAOImpl implements GuestbookDAO {
 	}
 
 	@Override
-	public void deleteDataById(String writerName) {
+	public void deleteDataById(int id) {
 		// TODO Auto-generated method stub
-		sqlSession.delete("deleteDataById", writerName);
+		sqlSession.delete("deleteDataById", id);
 	}
 	@Override
 	public GuestbookVO getDataByWriterName(String writerName) {
 		return sqlSession.selectOne("getDataByWriterName", writerName);
+	}
+
+	@Override
+	public GuestbookVO getDataById(int id) {
+		return sqlSession.selectOne("getDataById", id);
 	}
 }

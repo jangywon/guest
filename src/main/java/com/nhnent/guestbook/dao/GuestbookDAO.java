@@ -11,8 +11,9 @@ import com.nhnent.guestbook.vo.GuestbookVO;
 public interface GuestbookDAO {
 	public List<GuestbookVO> getAllData();
 	public String getPasswordByWriterName(String writerName);
+	public GuestbookVO getDataById(int id);
 	public GuestbookVO getDataByWriterName(String writerName);
 	public void insertData(GuestbookVO guestbookVO);
-	public void deleteDataById(String writerName);
+	public void deleteDataById(int id);
  
 }
